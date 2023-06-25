@@ -1,0 +1,30 @@
+﻿@page
+@model SMS.Evening.Host.Pages.Account.RegisterModel
+@{
+}
+<div class="container">
+    <form method="post" asp-page="/Account/Register">
+        <!-- Username input-->
+        <div class="mb-3">
+            <label for="userName" class="form-label">User Name</label>
+            <input type="text" class="form-control" id="userName" asp-for="@Model.RegisterParams.UserName">
+        </div>
+        <!-- Email input-->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" asp-for="@Model.RegisterParams.Email">
+        </div>
+        <!-- Password input-->
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" asp-for="@Model.RegisterParams.Password">
+        </div>
+        <!-- Confirm password input-->
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword" asp-for="@Model.RegisterParams.ConfirmPassword">
+        </div>
+        <!-- Submit button-->
+        <input type="submit" class="btn btn-primary mb-3" />
+    </form>
+</div>

@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SMS.Evening.Data\SMS.Evening.Data.csproj" />
+    <ProjectReference Include="..\SMS.Evening.Service\SMS.Evening.Service.csproj" />
   </ItemGroup>
 
 </Project>

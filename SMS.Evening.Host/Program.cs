@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SMS.Evening.Core.IRepositories;
+using SMS.Evening.Core.Repositories;
 using SMS.Evening.Data;
+using SMS.Evening.Service.IServices;
+using SMS.Evening.Service.Services;
 
 namespace SMS.Evening.Host
 {
@@ -15,6 +19,8 @@ namespace SMS.Evening.Host
             builder.Services.AddDbContext<SMSDbContext>(options => options.UseSqlServer(connectionString));
             // add identity features
             builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<SMSDbContext>();
+            builder.Services.AddTransient<IAccountRepositories, AccountRepositories>();
+            builder.Services.AddTransient<IAccountService, AccountService>();
             // Add services to the container.
             builder.Services.AddRazorPages();
 
@@ -32,6 +38,8 @@ namespace SMS.Evening.Host
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
