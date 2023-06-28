@@ -27,6 +27,14 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Student/CreateStudent">Student</a>
+                            </li>
+                            <li class="nav-item">
+                                <form class="form-inline" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Account/Login")" method="post">
+                                    <button type="submit" class="nav-link btn btn-link">Logout</button>
+                                </form>
+                            </li>
                         </ul>
                     }
                     else

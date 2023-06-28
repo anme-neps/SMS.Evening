@@ -21,6 +21,8 @@ namespace SMS.Evening.Host
             builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<SMSDbContext>();
             builder.Services.AddTransient<IAccountRepositories, AccountRepositories>();
             builder.Services.AddTransient<IAccountService, AccountService>();
+            builder.Services.AddTransient<IStudentRepositories, StudentRepositories>();
+            builder.Services.AddTransient<IStudentService, StudentService>();
             // Add services to the container.
             builder.Services.AddRazorPages();
 
