@@ -21,5 +21,11 @@ namespace SMS.Evening.Host.Pages.Student
         {
             GenderList = Enum.GetValues<GenderType>().ToList();
         }
+
+        public async Task<IActionResult> OnPost()
+        {
+            var response = await _studentService.CreateStudent(StudentVM);
+            return Page();
+        }
     }
 }

@@ -1,0 +1,27 @@
+﻿@page
+@model SMS.Evening.Host.Pages.Student.IndexModel
+@{
+}
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Date Of Birth</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Grade Level</th>
+                <th scope="col">Contact</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model.StudentsVM.Count > 0)
+            {
+                foreach(var item in Model.StudentsVM)
+                {
+                    //html code to display data
+                }
+            }
+        </tbody>
+    </table>
+</div>

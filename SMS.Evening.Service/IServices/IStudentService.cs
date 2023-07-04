@@ -12,5 +12,8 @@ namespace SMS.Evening.Service.IServices
     public interface IStudentService
     {
         Task<DataResult> CreateStudent(StudentViewModel studentParams);
+        Task<DataResult> UpdateStudent(StudentViewModel studentParams);
+        Task<DataResult> DeleteStudent(int studentId);
+        Task<DataResult<StudentViewModel>> GetAllStudent();
     }
 }

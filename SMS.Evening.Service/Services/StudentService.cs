@@ -37,5 +37,47 @@ namespace SMS.Evening.Service.Services
             var response = await _studentRepo.CreateStudent(student);
             return response;
         }
+
+        public async Task<DataResult> DeleteStudent(int studentId)
+        {
+            var response = await _studentRepo.DeleteStudent(studentId);
+            return response;
+        }
+
+        public async Task<DataResult<StudentViewModel>> GetAllStudent()
+        {
+            DataResult<StudentViewModel> studentViewModel = new DataResult<StudentViewModel>();
+            DataResult<Student> studentDataModel = await _studentRepo.GetAllStudent();
+            studentViewModel.Data = studentDataModel.Data.Select(x => new StudentViewModel
+                                    { 
+                                        StudentID  = x.StudentID,
+                                        FirstName = x.FirstName,
+                                        LastName = x.LastName,
+                                        Contact = x.Contact,
+                                        DateOfBirth= x.DateOfBirth,
+                                        Gender= x.Gender,
+                                        GradeLevel= x.GradeLevel
+                                    }).ToList();
+            studentViewModel.IsSuccess = studentDataModel.IsSuccess;
+            studentViewModel.Message = studentDataModel.Message;
+            return studentViewModel;
+        }
+
+        public async Task<DataResult> UpdateStudent(StudentViewModel studentParams)
+        {
+            Student student = new Student
+            {
+                FirstName = studentParams.FirstName,
+                LastName = studentParams.LastName,
+                Contact = studentParams.Contact,
+                DateOfBirth = studentParams.DateOfBirth,
+                Gender = studentParams.Gender,
+                GradeLevel = studentParams.GradeLevel,
+                LastModifiedBy = "",
+                LastModifiedDate = DateTime.Now
+            };
+            var response = await _studentRepo.UpdateStudent(student);
+            return response;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using SMS.Evening.Core.IRepositories;
+﻿using Microsoft.EntityFrameworkCore;
+using SMS.Evening.Core.IRepositories;
 using SMS.Evening.Data;
 using SMS.Evening.Data.Helprs;
 using SMS.Evening.Data.Models.DataModels;
@@ -38,19 +39,76 @@ namespace SMS.Evening.Core.Repositories
             return result;
         }
 
-        public Task<DataResult> DeleteStudent(int id)
+        public async Task<DataResult> DeleteStudent(int id)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+            try
+            {
+                var std = await _context.Students.FindAsync(id);
+                if(std == null)
+                {
+                    result.IsSuccess = false;
+                    result.Message = "No student found";
+                }
+                std.IsDeleted = true;
+                await _context.SaveChangesAsync();
+                result.IsSuccess = true;
+                result.Message = "Student deleted successfully";
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Message = ex.Message;
+            }
+            return result;
         }
 
-        public Task<DataResult<Student>> GetAllStudent()
+        public async Task<DataResult<Student>> GetAllStudent()
         {
-            throw new NotImplementedException();
+            DataResult<Student> result = new DataResult<Student>();
+            try
+            {
+                result.Data = await _context.Students.Where(i => i.IsDeleted == false).ToListAsync();
+                result.IsSuccess = true;
+                result.Message = "Get all student success";
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Message = ex.Message;
+            }
+            return result;
         }
 
-        public Task<DataResult> UpdateStudent(Student studentParams)
+        public async Task<DataResult> UpdateStudent(Student studentParams)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+            try
+            {
+                var std = await _context.Students.FindAsync(studentParams.StudentID);
+                if (std == null)
+                {
+                    result.IsSuccess = false;
+                    result.Message = "No student found";
+                }
+                std.FirstName = studentParams.FirstName;
+                std.LastName = studentParams.LastName;
+                std.DateOfBirth = studentParams.DateOfBirth;
+                std.Gender = studentParams.Gender;
+                std.GradeLevel = studentParams.GradeLevel;
+                std.Contact = studentParams.Contact;
+                std.LastModifiedDate = studentParams.LastModifiedDate;
+                std.LastModifiedBy = studentParams.LastModifiedBy;
+                await _context.SaveChangesAsync();
+                result.IsSuccess = true;
+                result.Message = "Student updated successfully";
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Message = ex.Message;
+            }
+            return result;
         }
     }
 }
