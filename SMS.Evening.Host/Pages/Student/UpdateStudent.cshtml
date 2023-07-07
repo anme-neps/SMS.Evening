@@ -3,48 +3,50 @@
 @{
 }
 <div class="container">
+    
     <form method="post" asp-page="Student/UpdateStudent">
-        <div class="mb-3 row">
-            <div class="col">
-                <input type="text" class="form-control visually-hidden" asp-for="@Model.StudentVM.StudentID" >
-                <input type="text" class="form-control" asp-for="@Model.StudentVM.FirstName" id="firstName" placeholder="First Name">
+            <div class="mb-3 row">
+                <div class="col">
+                    <input type="text" class="form-control visually-hidden" asp-for="@Model.StudentVM.StudentID" >
+                    <input type="text" class="form-control" asp-for="@Model.StudentVM.FirstName" id="firstName" placeholder="First Name">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" asp-for="@Model.StudentVM.LastName" id="lastName" placeholder="Last Name">
+                </div>
             </div>
-            <div class="col">
-                <input type="text" class="form-control" asp-for="@Model.StudentVM.LastName" id="lastName" placeholder="Last Name">
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <div class="col">
-                <input type="text" class="form-control" asp-for="@Model.StudentVM.DateOfBirth" id="dateOfBirth" placeholder="Date of birth">
-            </div>
-            <div class="col">
-                <select class="form-control" id="gender" asp-for="@Model.StudentVM.Gender">
-                    <option selected>Select Gender</option>
-                    @{
-                        if (Model.GenderList.Count > 0)
-                        {
-                            foreach (var item in Model.GenderList)
+            <div class="mb-3 row">
+                <div class="col">
+                    <input type="text" class="form-control" asp-for="@Model.StudentVM.DateOfBirth" id="dateOfBirth" placeholder="Date of birth">
+                </div>
+                <div class="col">
+                    <select class="form-control" id="gender" asp-for="@Model.StudentVM.Gender">
+                        <option selected>Select Gender</option>
+                        @{
+                            if (Model.GenderList.Count > 0)
                             {
-                                <option value="@item">@item</option>
+                                foreach (var item in Model.GenderList)
+                                {
+                                    <option value="@item">@item</option>
+                                }
                             }
                         }
-                    }
-                </select>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="mb-3 row">
-            <div class="col">
-                <input type="text" class="form-control" asp-for="@Model.StudentVM.GradeLevel" id="gradeLevel" placeholder="Grade Level">
+            <div class="mb-3 row">
+                <div class="col">
+                    <input type="text" class="form-control" asp-for="@Model.StudentVM.GradeLevel" id="gradeLevel" placeholder="Grade Level">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" asp-for="@Model.StudentVM.Contact" id="contact" placeholder="Contact">
+                </div>
             </div>
-            <div class="col">
-                <input type="text" class="form-control" asp-for="@Model.StudentVM.Contact" id="contact" placeholder="Contact">
+            <div>
+                @*Update Button*@
+                <input type="submit" value="Update" class="btn btn-primary"/>
+                @*Calcel Button*@
+                <a class="btn btn-danger" asp-page="/Student/Index" role="button">Cancel</a>
             </div>
-        </div>
-        <div>
-            @*Update Button*@
-            <input type="submit" value="Update" class="btn btn-primary"/>
-            @*Calcel Button*@
-            <a class="btn btn-danger" asp-page="/Student/Index" role="button">Cancel</a>
-        </div>
-    </form>
+        </form>
+    
 </div>

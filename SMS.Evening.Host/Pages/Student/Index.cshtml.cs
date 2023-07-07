@@ -27,5 +27,17 @@ namespace SMS.Evening.Host.Pages.Student
                 return NotFound();
             }
         }
+        public async Task<IActionResult> OnPostDelete(int id)
+        {
+            var response = await _studentService.DeleteStudent(id);
+            if (response.IsSuccess)
+            {
+                return RedirectToAction("/Student/Index");
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }

@@ -33,9 +33,16 @@
                         <td>@item.GradeLevel</td>
                         <td>@item.Contact</td>
                         <td>
-                            <a asp-page="/Student/UpdateStudent" asp-route-id="@item.StudentID" role="button">
-                                <i class="fa-solid fa-pencil"></i>
-                            </a>
+                            <form method="post">
+                                @*Edit Button*@
+                                <a asp-page="/Student/UpdateStudent" asp-route-id="@item.StudentID" role="button">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </a>
+                                @*Delete Button*@
+                                <button type="submit" asp-page="/Student/Index" asp-page-handler="Delete" class="deleteButton" asp-route-id="@item.StudentID">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 }
