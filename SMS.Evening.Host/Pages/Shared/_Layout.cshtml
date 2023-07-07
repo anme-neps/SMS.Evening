@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SMS.Evening.Host.styles.css" asp-append-version="true" />
+    <script src="~/lib/font-awesome/js/all.js"></script>
+    <script src="~/lib/font-awesome/js/all.min.js"></script>
 </head>
 <body>
     <header>
@@ -28,7 +30,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Student/CreateStudent">Student</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Student/Index">Student</a>
                             </li>
                             <li class="nav-item">
                                 <form class="form-inline" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Account/Login")" method="post">

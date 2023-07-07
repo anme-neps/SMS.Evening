@@ -46,8 +46,11 @@ namespace SMS.Evening.Service.Services
 
         public async Task<DataResult<StudentViewModel>> GetAllStudent()
         {
+            // Define StudentViewModel variable to get data and return
             DataResult<StudentViewModel> studentViewModel = new DataResult<StudentViewModel>();
+            // Define Student(Data Model) variable to get data from Repositories -> from Database
             DataResult<Student> studentDataModel = await _studentRepo.GetAllStudent();
+            // Convert Student(Data Model) to StudentViewModel using EntityFramework 'Select' statement
             studentViewModel.Data = studentDataModel.Data.Select(x => new StudentViewModel
                                     { 
                                         StudentID  = x.StudentID,
@@ -58,6 +61,7 @@ namespace SMS.Evening.Service.Services
                                         Gender= x.Gender,
                                         GradeLevel= x.GradeLevel
                                     }).ToList();
+
             studentViewModel.IsSuccess = studentDataModel.IsSuccess;
             studentViewModel.Message = studentDataModel.Message;
             return studentViewModel;
@@ -67,6 +71,7 @@ namespace SMS.Evening.Service.Services
         {
             Student student = new Student
             {
+                StudentID= studentParams.StudentID,
                 FirstName = studentParams.FirstName,
                 LastName = studentParams.LastName,
                 Contact = studentParams.Contact,
