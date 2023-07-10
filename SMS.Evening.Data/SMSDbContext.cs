@@ -8,5 +8,6 @@ namespace SMS.Evening.Data
     {
         public SMSDbContext(DbContextOptions<SMSDbContext> options) : base(options) { }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
     }
 }
