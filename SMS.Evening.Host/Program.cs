@@ -23,6 +23,8 @@ namespace SMS.Evening.Host
             builder.Services.AddTransient<IAccountService, AccountService>();
             builder.Services.AddTransient<IStudentRepositories, StudentRepositories>();
             builder.Services.AddTransient<IStudentService, StudentService>();
+            builder.Services.AddTransient<ITeacherRepositories, TeacherRepositories>();
+            builder.Services.AddTransient<ITeacherService, TeacherService>();
             // Add services to the container.
             builder.Services.AddRazorPages();
 

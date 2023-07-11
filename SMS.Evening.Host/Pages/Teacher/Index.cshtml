@@ -1,0 +1,60 @@
+﻿@page
+@model SMS.Evening.Host.Pages.Teacher.IndexModel
+@{
+}
+<div class="container">
+    <div>
+        <a class="btn btn-success" asp-page="/Teacher/CreateTeacher" role="button">
+            <i class="fa-solid fa-plus"></i> Add
+        </a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Date Of Birth</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.TeachersVM.Count > 0)
+            {
+                foreach (var item in Model.TeachersVM)
+                {
+                    <tr>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.DateOfBirth</td>
+                        <td>@item.Gender</td>
+                        <td>@item.Subject</td>
+                        <td>@item.Phone</td>
+                        <td>@item.Email</td>
+                        <td>
+                            @*Edit Button*@
+                            <a asp-page="/Teacher/UpdateTeacher" asp-route-id="@item.Id" role="button">
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
+                            @*Delete Button*@
+                            <a asp-page="/Teacher/DeleteTeacher" asp-route-id="@item.Id" role="button">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="8" class="text-center">
+                        No Data.
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

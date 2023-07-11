@@ -111,16 +111,19 @@ namespace SMS.Evening.Core.Repositories
                     teach.Gender = teacherArgs.Gender;
                     teach.Phone = teacherArgs.Phone;
                     teach.Subject = teacherArgs.Subject;
-                    teach.CreatedBy = teacherArgs.CreatedBy;
-                    teach.CreationDate = teacherArgs.CreationDate;
+                    teach.LastModifiedBy = teacherArgs.LastModifiedBy;
+                    teach.LastModifiedDate = teacherArgs.LastModifiedDate;
                     
                     //Execute to db to update value
                     await _context.SaveChangesAsync();
                     result.IsSuccess = true;
                     result.Message = "Update teacher success";
                 }
-                result.IsSuccess = false;
-                result.Message = "No data found";
+                else 
+                { 
+                    result.IsSuccess = false;
+                    result.Message = "No data found";
+                }
             }
             catch(Exception ex )
             {

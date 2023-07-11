@@ -1,0 +1,44 @@
+﻿@page
+@model SMS.Evening.Host.Pages.Teacher.DeleteTeacherModel
+@{
+}
+<div class="container">
+    <h2>Delete Teacher</h2>
+    <form method="post" asp-page="/Teacher/DeleteTeacher">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <input type="text" readonly class="form-control visually-hidden" asp-for="@Model.TeacherVM.Id" />
+                <input type="text" readonly class="form-control" id="firstName" placeholder="First Name" asp-for="@Model.TeacherVM.FirstName" />
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" readonly class="form-control" id="lastName" placeholder="Last Name" asp-for="@Model.TeacherVM.LastName" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <input type="date" readonly class="form-control" id="dob" placeholder="Date Of Birth" asp-for="@Model.TeacherVM.DateOfBirth" />
+            </div>
+            <div class="form-group col-md-6">
+                <select class="form-control" readonly id="gender" asp-for="@Model.TeacherVM.Gender">    
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <input type="text" readonly class="form-control" id="subject" placeholder="Subject" asp-for="@Model.TeacherVM.Subject" />
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" readonly class="form-control" id="phone" placeholder="Phone" asp-for="@Model.TeacherVM.Phone" />
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" readonly class="form-control" id="email" placeholder="Email" asp-for="@Model.TeacherVM.Email" />
+            </div>
+        </div>
+        <div>
+            @*Delete Button*@
+            <input type="submit" value="Delete" class="btn btn-primary" />
+            @*Cancel Button*@
+            <a class="btn btn-danger" asp-page="/Teacher/Index" role="button">Cancel</a>
+        </div>
+    </form>
+</div>
